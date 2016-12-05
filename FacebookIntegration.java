@@ -43,59 +43,14 @@ public class FacebookIntegration
 		File file = new File(fileName);
 		try{
 		results= getFacebookPostes(facebook, searchPost);
-		if(results.length()==0)
-		{
-			System.out.println("No post retrieved");
-		}
-		else
-		{
-		
-		//Write into file
-			if (!file.exists()) 
-			{
-				file.createNewFile();
-				FileWriter fw = new FileWriter(file.getAbsoluteFile());
-				BufferedWriter bw = new BufferedWriter(fw);
-				bw.write(results);
-				bw.close();
-				System.out.println("Completed");
-			}	
-		}
 		}
 		catch(Exception e){
 			
 			System.out.println("Posts not able to retrieve!!! Please try a different brand.");
 		}
-		//twitter
-		//String fileName="";
-		if (!file.exists()) 
-			file.createNewFile();
-		TwitterTweets tt=new TwitterTweets();
-		try
-		{
-		tt.tweet(fileName,searchPost);
-		System.out.println("Completed");	
-		}
-		catch(Exception e){
-			System.out.println("Tweets not able to retrieve!!! Please try a different brand.");
-		}
 		
 		
-		PreProcess nn= new PreProcess();
 		
-		try 
-		{
-			System.out.println("Start neural");
-			
-			//File fr3=new File("C:/Project/Pattern.txt");
-			File fr3=new File(fileName);
-			arr=nn.start(fr3);
-			System.out.println(arr[0]);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 	}
 
